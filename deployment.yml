@@ -1,0 +1,73 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microserver1-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: microserver1
+  template:
+    metadata:
+      labels:
+        app: microserver1
+    spec:
+      containers:
+      - name: microserver1
+        image: sukhilnair/mern:microservice1
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3000
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microserver2-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: microserver2
+  template:
+    metadata:
+      labels:
+        app: microserver2
+    spec:
+      containers:
+      - name: microserver2
+        image: sukhilnair/mern:microservice2
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3001
+
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microserver3-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microserver3
+  template:
+    metadata:
+      labels:
+        app: microserver3
+    spec:
+      containers:
+      - name: microserver3
+        image: sukhilnair/mern:microservice3
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 3002

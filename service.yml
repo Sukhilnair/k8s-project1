@@ -1,0 +1,41 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: microserver1-server
+spec:
+  selector:
+    app: microserver1
+  ports:
+  - port: 3000
+    targetPort: 3000
+    nodePort: 30100
+  type: NodePort
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: microserver2-server
+spec:
+  selector:
+    app: microserver2
+  ports:
+  - port: 3001
+    targetPort: 3001
+    nodePort: 30200
+  type: NodePort
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: microserver3-server
+spec:
+  selector:
+    app: microserver3
+  ports:
+  - port: 3002
+    targetPort: 3002
+    nodePort: 30300
+  type: NodePort
